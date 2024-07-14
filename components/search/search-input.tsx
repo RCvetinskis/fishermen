@@ -4,6 +4,7 @@ import { Input } from "../ui/input";
 
 import { X } from "lucide-react";
 import { Button } from "../ui/button";
+import { Skeleton } from "../ui/skeleton";
 
 type Props = {};
 
@@ -40,3 +41,15 @@ const SearchInput = (props: Props) => {
 };
 
 export default SearchInput;
+
+export const SearchInputSkeleton = () => {
+  return (
+    <div className=" w-full flex md:justify-center  gap-1 mx-6">
+      <div className="relative w-full  md:w-1/2">
+        <Skeleton className="w-full h-10 px-4 py-2 bg-gray-500 " />
+        <Skeleton className="absolute top-0 right-0  px-3 bg-gray-500" />
+      </div>
+      <Skeleton className="bg-gray-500 w-16 h-10" />
+    </div>
+  );
+};

@@ -1,0 +1,49 @@
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+
+model Product {
+  id             String         @id @default(auto()) @map("_id") @db.ObjectId
+  title          String
+  manufacturer     String
+  price          String
+  quantity       Int
+  image          String?
+  available      Boolean
+
+  categories     Category[]     @relation(fields: [categoryIds], references: [id])
+  categoryIds    String[]       @db.ObjectId
+
+  sales          Sales[]     @relation(fields: [salesIds], references: [id])
+  salesIds       String[]       @db.ObjectId
+
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime       @updatedAt
+}
+
+model Category {
+  id             String         @id @default(auto()) @map("_id") @db.ObjectId
+  name           String
+  products       Product[]      @relation(fields: [productIds], references: [id])
+  productIds     String[]       @db.ObjectId
+
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime       @updatedAt
+}
+
+model Sales{
+  id             String         @id @default(auto()) @map("_id") @db.ObjectId
+  products       Product[]      @relation(fields: [productIds], references: [id])
+  productIds     String[]       @db.ObjectId
+  quantitySold   Int
+  salesDate      DateTime       @default(now())
+  updatedAt      DateTime       @updatedAt
+}
+

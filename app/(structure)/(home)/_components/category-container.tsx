@@ -1,4 +1,6 @@
-import CategoryCard from "@/components/cards/category-card";
+import CategoryCard, {
+  CategoryCardSkeleton,
+} from "@/components/cards/category-card";
 import { categories } from "@/lib/categories";
 
 type Props = {};
@@ -14,3 +16,13 @@ const CategoryContainer = (props: Props) => {
 };
 
 export default CategoryContainer;
+
+export const CategoryContainerSkeleton = () => {
+  return (
+    <main className="flex flex-wrap items-center gap-10">
+      {[...Array(10)].map((_, i) => (
+        <CategoryCardSkeleton key={i} />
+      ))}
+    </main>
+  );
+};

@@ -9,3 +9,16 @@ export type Category = {
   query: string;
   image?: string;
 };
+
+export type Product = {
+  id: string | number;
+  title: string;
+  price: number;
+  category: string;
+  description: string;
+  image: string;
+  rating: {
+    rate: number;
+    count: number;
+  };
+};

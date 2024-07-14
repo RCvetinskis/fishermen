@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Route } from "@/types";
 import { HoverLabel } from "../hover-label";
+import { Skeleton } from "../ui/skeleton";
 
 type Props = {
   route: Route;
@@ -24,3 +25,7 @@ const NavItem = ({ route }: Props) => {
 };
 
 export default NavItem;
+
+export const NavItemSkeleton = () => {
+  return <Skeleton className="h-6 w-6  bg-gray-400 rounded-full" />;
+};

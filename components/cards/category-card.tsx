@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import { WobbleCard } from "../ui/wobble-card";
-import { cn } from "@/lib/utils";
 import { Category } from "@/types";
+import { Skeleton } from "../ui/skeleton";
 
 type Props = {
   category: Category;
@@ -28,3 +28,11 @@ const CategoryCard = ({ category }: Props) => {
 };
 
 export default CategoryCard;
+
+export const CategoryCardSkeleton = () => {
+  return (
+    <div className="flex-1">
+      <Skeleton className="p-4 min-w-[100px] max-w-[150px]  min-h-[75px] h-[100px] md:min-w-[150px] md:max-w-[200px]  md:min-h-[100px] md:h-[150px] flex justify-center items-center  "></Skeleton>
+    </div>
+  );
+};

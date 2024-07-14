@@ -1,9 +1,9 @@
 "use client";
 import useRoutes from "@/hooks/useRoutes";
 import { useEffect, useState } from "react";
-import NavItem from "./nav-item";
+import NavItem, { NavItemSkeleton } from "./nav-item";
 import useMediaQuery from "@/hooks/useMediaQuery";
-import SearchInput from "../search/search-input";
+import SearchInput, { SearchInputSkeleton } from "../search/search-input";
 
 const NavBar = () => {
   const [isMounted, setIsMounted] = useState(false);
@@ -15,6 +15,27 @@ const NavBar = () => {
   useEffect(() => {
     setIsMounted(true);
   }, []);
+
+  if (!isMounted) {
+    return (
+      <nav className="fixed top-0 w-full py-3 px-2 lg:px-6 lg:h-16 h-fit z-50 bg-white dark:bg-[#020817] shadow-2xl">
+        <div className="flex items-center">
+          <NavItemSkeleton />
+
+          {!isMdSize && (
+            <div className="flex-grow flex justify-center">
+              <SearchInputSkeleton />
+            </div>
+          )}
+          <div className="flex items-center  lg:space-x-6 space-x-2">
+            {[...Array(3)].map((_, i) => (
+              <NavItemSkeleton key={i} />
+            ))}
+          </div>
+        </div>
+      </nav>
+    );
+  }
   return (
     <nav className="fixed top-0 w-full py-3 px-2 lg:px-6 lg:h-16 h-fit z-50 bg-white dark:bg-[#020817] shadow-2xl">
       <div className="flex  justify-between items-center w-full">

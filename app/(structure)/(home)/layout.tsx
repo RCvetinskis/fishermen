@@ -1,4 +1,3 @@
-import SideBar from "@/components/sidebar";
 import Hero from "../_components/hero";
 
 type Props = {
@@ -11,7 +10,6 @@ const Layout = ({ children }: Props) => {
       <header className="w-full">
         <Hero />
       </header>
-
       <main className="col-span-5 md:container mt-4 ">{children}</main>
     </div>
   );
