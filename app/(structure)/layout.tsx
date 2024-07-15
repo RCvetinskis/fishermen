@@ -1,13 +1,23 @@
+import { getCategories } from "@/actions/fetch/fetch-categories-action";
+import CategoryContainer from "@/components/category/category-container";
 import NavBar from "@/components/navigation/index";
 
 type Props = {
   children: React.ReactNode;
 };
 
-const Layout = ({ children }: Props) => {
+const Layout = async ({ children }: Props) => {
+  const categories = await getCategories();
+  if (!categories) {
+    return (
+      <div>
+        <h1>Categories not found!</h1>
+      </div>
+    );
+  }
   return (
     <div>
-      <NavBar />
+      <NavBar categories={categories} />
       <main className="mt-[140px] md:mt-[90px]">{children}</main>
     </div>
   );

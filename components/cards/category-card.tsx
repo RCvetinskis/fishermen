@@ -10,6 +10,7 @@ type Props = {
 };
 
 const CategoryCard = ({ category }: Props) => {
+  console.log(category);
   const { label, query, image } = category;
   const path = `/search/fishing&${query}`;
 

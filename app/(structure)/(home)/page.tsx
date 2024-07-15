@@ -1,7 +1,5 @@
 import { Suspense } from "react";
-import CategoryContainer, {
-  CategoryContainerSkeleton,
-} from "./_components/category-container";
+
 import TopPicksContainer, {
   TopPicksContainerSkeleton,
 } from "./_components/top-picks-container";
@@ -9,12 +7,6 @@ import TopPicksContainer, {
 const HomePage = () => {
   return (
     <div className="space-y-8">
-      <h2 className="text-4xl font-bold mb-4 ">Shop by category</h2>
-
-      <Suspense fallback={<CategoryContainerSkeleton />}>
-        <CategoryContainer />
-      </Suspense>
-
       <h3 className="text-4xl font-bold mb-4 ">Top Rated Picks</h3>
       <Suspense fallback={<TopPicksContainerSkeleton />}>
         <TopPicksContainer />

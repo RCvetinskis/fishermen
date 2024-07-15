@@ -1,17 +1,11 @@
-import { getProductById } from "@/actions/fetch/products-api-action";
-import { Product } from "@/types";
-import Image from "next/image";
-
 type Props = {
   params: { id: string };
 };
 
 const ProductPage = async ({ params }: Props) => {
-  const product = (await getProductById(params.id)) as Product;
-  console.log(product);
   return (
     <div className="grid grid-cols-2">
-      <div className="relative h-96">
+      {/* <div className="relative h-96">
         <Image
           src={product.image}
           alt={product.title}
@@ -26,7 +20,7 @@ const ProductPage = async ({ params }: Props) => {
           <p className="text-sm">{product.description}</p>
           <p className="text-lg font-semibold">{product.price} $</p>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };
