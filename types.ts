@@ -4,24 +4,6 @@ export interface Route {
   active?: boolean;
   Component: React.ComponentType<any>;
 }
-// export type Category = {
-//   label: string;
-//   query: string;
-//   image?: string;
-// };
-
-export type Product = {
-  id: string | number;
-  title: string;
-  price: number;
-  category: string;
-  description: string;
-  image: string;
-  rating: {
-    rate: number;
-    count: number;
-  };
-};
 
 // Image Object
 export type Image = {
@@ -128,3 +110,111 @@ export type CategoryTreeIdResponse = {
   categoryTreeId: string;
   categoryTreeVersion: string;
 };
+export interface CategorySubtree {
+  categorySubtreeNode: ChildCategoryTreeNode;
+  categoryTreeId: string;
+  categoryTreeVersion: string;
+}
+
+export interface DealProduct {
+  itemId: string;
+  legacyItemId: string;
+  title: string;
+  image?: Image;
+  marketingPrice?: MarketingPrice;
+  price?: Price;
+  shippingOptions: ShippingOption[];
+  itemWebUrl: string;
+  categoryId: string;
+  categoryAncestorIds: string[];
+  commissionable: boolean;
+  dealWebUrl: string;
+  dealStartDate: string;
+  dealEndDate: string;
+}
+
+export interface MarketingPrice {
+  originalPrice: Price;
+  discountPercentage: string;
+  discountAmount: Price;
+  priceTreatment: string;
+}
+
+export interface ShippingCost {
+  value: string;
+  currency: string;
+}
+
+export interface QueryParams {
+  q?: string;
+  gtin?: string;
+  charity_ids?: string;
+  fieldgroups?: string;
+  compatibility_filter?: string;
+  auto_correct?: string;
+  category_ids?: string;
+  filter?: string;
+  sort?: string;
+  aspect_filter?: string;
+  epid?: string;
+  offset?: string;
+  limit?: string;
+  page?: string;
+}
+
+export interface SearchProduct extends DealProduct {
+  itemId: string;
+  title: string;
+  leafCategoryIds: string[];
+  categories: Category[];
+  price?: Price;
+  marketingPrice?: MarketingPrice;
+  image?: Image;
+  itemHref: string;
+  seller: Seller;
+  condition: string;
+  conditionId: string;
+  shippingOptions: ShippingOption[];
+  buyingOptions: string[];
+  itemWebUrl: string;
+  itemLocation: ItemLocation;
+  adultOnly: boolean;
+  legacyItemId: string;
+  availableCoupons: boolean;
+  itemCreationDate: string;
+  topRatedBuyingExperience: boolean;
+  priorityListing: boolean;
+  listingMarketplaceId: string;
+}
+
+export interface RangeValue {
+  end: string;
+  exclusiveEnd: boolean;
+  exclusiveStart: boolean;
+  range: boolean;
+  start: string;
+}
+export interface FilterField {
+  field: string;
+  negated: boolean;
+  range: RangeValue;
+  set: string[];
+  value: string;
+}
+
+export interface SortField {
+  // Example properties
+  sortBy: string;
+  ascending: boolean;
+}
+
+export interface SearchParams {
+  q?: string;
+  fieldgroups?: string[];
+  category_ids?: string[];
+  filter?: FilterField[];
+  sort?: SortField[];
+  limit?: string;
+  offset?: string;
+  category?: string;
+}

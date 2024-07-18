@@ -1,6 +1,6 @@
 "use client";
 import { Skeleton } from "../ui/skeleton";
-import { SearchProduct } from "@/types";
+import { DealProduct, SearchProduct } from "@/types";
 import Link from "next/link";
 
 import Price from "../price";
@@ -14,12 +14,18 @@ import {
 import Image from "next/image";
 
 type Props = {
-  product: SearchProduct;
+  product: DealProduct;
 };
 
-const ProductCard = ({ product }: Props) => {
+const DealCard = ({ product }: Props) => {
+  console.log(product);
   return (
-    <Link href={`/products/${product.itemId}`} className="group/card h-full">
+    <Link
+      href={`/products/${
+        product.itemId ? product.itemId : product.legacyItemId
+      }`}
+      className="group/card h-full"
+    >
       <Card className="relative card shadow-lg shadow-black h-full">
         <div className="absolute w-full h-full top-0 left-0 transition duration-300 group-hover/card:bg-black/50 opacity-60"></div>
         <CardContent className="p-0">
@@ -51,9 +57,9 @@ const ProductCard = ({ product }: Props) => {
   );
 };
 
-export default ProductCard;
+export default DealCard;
 
-export const ProductCardSkeleton = () => {
+export const DealCardSkeleton = () => {
   return (
     <div className="w-full group/card">
       <Skeleton className=" cursor-pointer overflow-hidden relative card h-96 rounded-md shadow-xl  max-w-sm mx-auto backgroundImage flex flex-col justify-between p-4"></Skeleton>

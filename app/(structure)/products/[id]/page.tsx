@@ -3,6 +3,7 @@ type Props = {
 };
 
 const ProductPage = async ({ params }: Props) => {
+  
   return (
     <div className="grid grid-cols-2">
       {/* <div className="relative h-96">

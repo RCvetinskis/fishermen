@@ -1,5 +1,4 @@
-import { getCategories } from "@/actions/fetch/fetch-categories-action";
-import CategoryContainer from "@/components/category/category-container";
+import { getCategories } from "@/actions/fetch/get/taxonomy api/fetch-categories-action";
 import NavBar from "@/components/navigation/index";
 
 type Props = {

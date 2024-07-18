@@ -19,12 +19,16 @@ import Link from "next/link";
 type Props = {
   categories: ChildCategoryTreeNode[];
   children: React.ReactNode;
-  open: boolean;
-  setOpen: (open: boolean) => void;
+  form: any;
 };
 
-const CategoryPopover = ({ categories, children, open, setOpen }: Props) => {
-  const [value, setValue] = useState("");
+const CategoryPopover = ({ categories, children, form }: Props) => {
+  const [open, setOpen] = useState(false);
+
+  const defaultCategory = {
+    categoryId: "0",
+    categoryName: "All Categories",
+  };
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -32,25 +36,30 @@ const CategoryPopover = ({ categories, children, open, setOpen }: Props) => {
       <PopoverContent className="w-fit p-0">
         <Command>
           <CommandInput placeholder="Search category..." />
-          <CommandEmpty>No category found.</CommandEmpty>
+
           <CommandList>
+            <CommandEmpty>No category found.</CommandEmpty>
             <CommandGroup>
+              <CommandItem
+                value={defaultCategory.categoryName}
+                onSelect={() => {
+                  form.setValue("category", defaultCategory);
+                  setOpen(false);
+                }}
+              >
+                {defaultCategory.categoryName}
+              </CommandItem>
               {categories.map((category) => (
-                <Link
+                <CommandItem
                   key={category.category.categoryId}
-                  className="text-primary underline-offset-4 hover:underline"
-                  href={`/category?${category.category.categoryName}`}
+                  value={category.category.categoryName}
+                  onSelect={() => {
+                    form.setValue("category", category.category);
+                    setOpen(false);
+                  }}
                 >
-                  <CommandItem
-                    value={category.category.categoryName}
-                    onSelect={(currentValue) => {
-                      setValue(currentValue === value ? "" : currentValue);
-                      setOpen(false);
-                    }}
-                  >
-                    {category.category.categoryName}
-                  </CommandItem>
-                </Link>
+                  {category.category.categoryName}
+                </CommandItem>
               ))}
             </CommandGroup>
           </CommandList>

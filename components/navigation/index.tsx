@@ -5,10 +5,8 @@ import NavItem, { NavItemSkeleton } from "./nav-item";
 import useMediaQuery from "@/hooks/useMediaQuery";
 import SearchInput, { SearchInputSkeleton } from "../search/search-input";
 import { CategoryTreeResponse } from "@/types";
-import CategoryContainer from "../category/category-container";
 import { Button } from "../ui/button";
 import CategoryPopover from "../category/category-popover";
-import { ArrowDown } from "lucide-react";
 
 type Props = {
   categories: CategoryTreeResponse;
@@ -20,7 +18,6 @@ const NavBar = ({ categories }: Props) => {
   const homeRoute = routes[0];
   const otherRoutes = routes.slice(1);
 
-  const [open, setOpen] = useState(false);
   useEffect(() => {
     setIsMounted(true);
   }, []);
@@ -55,25 +52,14 @@ const NavBar = ({ categories }: Props) => {
         {/* Center Section - Search Input */}
         {!isMdSize && (
           <div className="flex-grow flex justify-center">
-            <SearchInput />
+            <SearchInput
+              categories={categories.rootCategoryNode.childCategoryTreeNodes}
+            />
           </div>
         )}
 
         {/* Right Section - Other Routes */}
         <div className="flex items-center  lg:space-x-6 space-x-2">
-          <CategoryPopover
-            open={open}
-            setOpen={setOpen}
-            categories={categories.rootCategoryNode.childCategoryTreeNodes}
-          >
-            <Button
-              className="text-xs flex flex-col sm:flex-row items-center gap-1"
-              variant="outline"
-              size={"sm"}
-            >
-              <span>Category</span>
-            </Button>
-          </CategoryPopover>
           {otherRoutes.map((route) => (
             <NavItem key={route.label} route={route} />
           ))}
@@ -82,11 +68,13 @@ const NavBar = ({ categories }: Props) => {
       {isMdSize && (
         <div className="mt-4">
           <div className="flex-grow flex justify-center">
-            <SearchInput />
+            <SearchInput
+              categories={categories.rootCategoryNode.childCategoryTreeNodes}
+            />
           </div>
         </div>
       )}
-      {!isMdSize && <CategoryContainer categories={categories} />}
+      {/* {!isMdSize && <CategoryContainer categories={categories} />} */}
     </nav>
   );
 };

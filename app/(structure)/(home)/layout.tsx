@@ -10,7 +10,9 @@ const Layout = ({ children }: Props) => {
       <header className="w-full">
         <Hero />
       </header>
-      <main className="col-span-5 md:container mt-4 ">{children}</main>
+      <main className="col-span-5  p-10 md:p-2 md:container mt-2 ">
+        {children}
+      </main>
     </div>
   );
 };
