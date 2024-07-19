@@ -12,7 +12,7 @@ export const getDeals = async () => {
       ...eBayHeaders,
     };
 
-    return getRequest(url, headers);
+    return await getRequest(url, headers);
   } catch (error) {
     console.log("Error fetching deals:", error);
     return null;

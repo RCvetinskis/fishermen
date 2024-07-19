@@ -1,4 +1,3 @@
-import { getItemsByQuery } from "@/actions/fetch/get/search api";
 import {
   getCategories,
   getCategorySubtree,
@@ -7,6 +6,7 @@ import CategorySideBar from "@/components/category/sidebar/category-sidebar";
 import { QueryParams, SearchProduct } from "@/types";
 import ProductsContainer from "./_components/products-container";
 import PaginationContainer from "@/components/pagination/pagination-contianer";
+import { getItemsByQuery } from "@/actions/fetch/get/browse api/search";
 
 type Props = {
   searchParams: QueryParams;

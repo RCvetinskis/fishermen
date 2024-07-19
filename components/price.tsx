@@ -1,11 +1,14 @@
+import { cn } from "@/lib/utils";
 import { MarketingPrice, Price as TPrice } from "@/types";
+import { Skeleton } from "./ui/skeleton";
 
 type Props = {
   price?: TPrice;
   marketingPrice?: MarketingPrice;
+  className?: string;
 };
 
-const Price = ({ price, marketingPrice }: Props) => {
+const Price = ({ price, marketingPrice, className }: Props) => {
   return (
     <div className="text-xs w-full">
       {marketingPrice && (
@@ -23,7 +26,7 @@ const Price = ({ price, marketingPrice }: Props) => {
         </div>
       )}
       {!marketingPrice && price && (
-        <div className="text-end font-semibold">
+        <div className={cn("text-end font-semibold", className)}>
           {price.currency} {price.value}
         </div>
       )}
@@ -32,3 +35,7 @@ const Price = ({ price, marketingPrice }: Props) => {
 };
 
 export default Price;
+
+export const PriceSkeleton = () => {
+  return <Skeleton className="w-1/6 h-4 bg-gray-300 mb-2" />;
+};

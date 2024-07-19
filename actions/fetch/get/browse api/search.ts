@@ -4,7 +4,6 @@ import { getRequest } from "@/lib/getRequest";
 import { domain, eBayHeaders } from "@/lib/request-env";
 import { getOAuthToken } from "../../getOAuthToken";
 import { QueryParams } from "@/types";
-import axios from "axios";
 
 export const getItemsByQuery = async (
   queryParams: QueryParams = {},
@@ -35,7 +34,7 @@ export const getItemsByQuery = async (
       ...eBayHeaders,
     };
 
-    return getRequest(url.toString(), headers);
+    return await getRequest(url.toString(), headers);
   } catch (error) {
     console.log("Error fetching items by query:", error);
     return null;

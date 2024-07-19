@@ -5,43 +5,6 @@ export interface Route {
   Component: React.ComponentType<any>;
 }
 
-// Image Object
-export type Image = {
-  imageUrl: string;
-  height?: number;
-  width?: number;
-};
-
-// Price Object
-export type Price = {
-  value: number;
-  currency: string;
-};
-
-// Seller Object
-export type Seller = {
-  username: string;
-  feedbackPercentage: number;
-  feedbackScore: number;
-};
-
-// Shipping Option Object
-export type ShippingOption = {
-  shippingCost: Price;
-  shippingCostType: string;
-  minEstimatedDeliveryDate: string;
-  maxEstimatedDeliveryDate: string;
-  shippingCarrierCode: string;
-};
-
-// Item Location Object
-export type ItemLocation = {
-  city: string;
-  stateOrProvince: string;
-  postalCode: string;
-  country: string;
-};
-
 // Item Summary Object
 export type ItemSummary = {
   itemId: string;
@@ -217,4 +180,502 @@ export interface SearchParams {
   limit?: string;
   offset?: string;
   category?: string;
+}
+
+export interface FullProduct {
+  additionalImages?: AdditionalImage[];
+  addonServices?: AddonService[];
+  adultOnly: string;
+  ageGroup?: string;
+  authenticityGuarantee?: AuthenticityGuarantee;
+  authenticityVerification?: AuthenticityVerification;
+  availableCoupons?: AvailableCoupon[];
+  bidCount?: string | number;
+  brand?: string;
+  buyingOptions?: string[];
+  categoryId: string;
+  categoryIdPath: string;
+  categoryPath: string;
+  color?: string;
+  condition?: string;
+  conditionDescription?: string;
+  conditionDescriptors?: ConditionDescriptor[];
+  conditionId?: string;
+  currentBidPrice?: CurrentBidPrice;
+  description?: string;
+  ecoParticipationFee?: EcoParticipationFee;
+  eligibleForInlineCheckout: boolean;
+  enabledForGuestCheckout: boolean;
+  energyEfficiencyClass?: string;
+  epid?: string;
+  estimatedAvailabilities?: EstimatedAvailability[];
+  gender?: string;
+  gtin?: string;
+  hazardousMaterialsLabels?: HazardousMaterialsLabels;
+  image: Image;
+  inferredEpid?: string;
+  itemAffiliateWebUrl?: string;
+  itemCreationDate?: string;
+  itemEndDate?: string;
+  itemId: string;
+  itemLocation?: ItemLocation;
+  itemWebUrl?: string;
+  legacyItemId: string;
+  listingMarketplaceId: string;
+  localizedAspects?: LocalizedAspect[];
+  lotSize?: string;
+  marketingPrice?: MarketingPrice;
+  material?: string;
+  minimumPriceToBid?: MinimumPriceToBid;
+  mpn?: string;
+  pattern?: string;
+  paymentMethods?: PaymentMethod[];
+  price: Price;
+  priceDisplayCondition?: string;
+  primaryItemGroup?: PrimaryItemGroup;
+  primaryProductReviewRating?: PrimaryProductReviewRating;
+  priorityListing: string;
+  product?: Product;
+  productFicheWebUrl?: string;
+  qualifiedPrograms?: string[];
+  quantityLimitPerBuyer?: string;
+  repairScore?: string;
+  reservePriceMet?: string;
+  returnTerms?: ReturnTerms;
+  seller: Seller;
+  sellerCustomPolicies?: SellerCustomPolicy[];
+  sellerItemRevision?: string;
+  shippingOptions: ShippingOption[];
+  shipToLocations?: ShipToLocations;
+  shortDescription?: string;
+  size?: string;
+  sizeSystem?: string;
+  sizeType?: string;
+  subtitle?: string;
+  taxes?: Tax[];
+  title: string;
+  topRatedBuyingExperience?: string;
+  tyreLabelImageUrl?: string;
+  uniqueBidderCount?: string;
+  unitPrice?: UnitPrice;
+  unitPricingMeasure?: string;
+  warnings?: Warning[];
+  watchCount?: string;
+}
+
+export interface AdditionalImage {
+  height: string;
+  imageUrl: string;
+  width: string;
+}
+
+export interface AddonService {
+  selection: string;
+  serviceFee: ServiceFee;
+  serviceId: string;
+  serviceType: string;
+}
+
+export interface ServiceFee {
+  convertedFromCurrency: string;
+  convertedFromValue: string;
+  currency: string;
+  value: string;
+}
+
+export interface AuthenticityGuarantee {
+  description: string;
+  termsWebUrl: string;
+}
+
+export interface AuthenticityVerification {
+  description: string;
+  termsWebUrl: string;
+}
+
+export interface AvailableCoupon {
+  constraint: Constraint;
+  discountAmount: DiscountAmount;
+  discountType: string;
+  message: string;
+  redemptionCode: string;
+  termsWebUrl: string;
+}
+
+export interface Constraint {
+  expirationDate: string;
+}
+
+export interface DiscountAmount {
+  currency: string;
+  value: string;
+}
+
+export interface ConditionDescriptor {
+  name: string;
+  values: Value[];
+}
+
+export interface Value {
+  additionalInfo: string[];
+  content: string;
+}
+
+export interface CurrentBidPrice {
+  convertedFromCurrency: string;
+  convertedFromValue: string;
+  currency: string;
+  value: string;
+}
+
+export interface EcoParticipationFee {
+  convertedFromCurrency: string;
+  convertedFromValue: string;
+  currency: string;
+  value: string;
+}
+
+export interface EstimatedAvailability {
+  availabilityThreshold: string;
+  availabilityThresholdType: string;
+  deliveryOptions: string[];
+  estimatedAvailabilityStatus: string;
+  estimatedAvailableQuantity: string;
+  estimatedSoldQuantity: string;
+}
+
+export interface HazardousMaterialsLabels {
+  additionalInformation: string;
+  pictograms: Pictogram[];
+  signalWord: string;
+  signalWordId: string;
+  statements: Statement[];
+}
+
+export interface Pictogram {
+  pictogramDescription: string;
+  pictogramId: string;
+  pictogramUrl: string;
+}
+
+export interface Statement {
+  statementDescription: string;
+  statementId: string;
+}
+
+export interface Image {
+  height: string;
+  imageUrl: string;
+  width: string;
+}
+
+export interface ItemLocation {
+  addressLine1: string;
+  addressLine2: string;
+  city: string;
+  country: string;
+  county: string;
+  postalCode: string;
+  stateOrProvince: string;
+}
+
+export interface LocalizedAspect {
+  name: string;
+  type: string;
+  value: string;
+}
+
+export interface MarketingPrice {
+  discountAmount: DiscountAmount2;
+  discountPercentage: string;
+  originalPrice: OriginalPrice;
+  priceTreatment: string;
+}
+
+export interface DiscountAmount2 {
+  convertedFromCurrency: string;
+  convertedFromValue: string;
+  currency: string;
+  value: string;
+}
+
+export interface OriginalPrice {
+  convertedFromCurrency: string;
+  convertedFromValue: string;
+  currency: string;
+  value: string;
+}
+
+export interface MinimumPriceToBid {
+  convertedFromCurrency: string;
+  convertedFromValue: string;
+  currency: string;
+  value: string;
+}
+
+export interface PaymentMethod {
+  paymentMethodType: string;
+  paymentMethodBrands: PaymentMethodBrand[];
+  paymentInstructions: string[];
+  sellerInstructions: string[];
+}
+
+export interface PaymentMethodBrand {
+  paymentMethodBrandType: string;
+  logoImage: LogoImage;
+}
+
+export interface LogoImage {
+  height: string;
+  imageUrl: string;
+  width: string;
+}
+
+export interface Price {
+  convertedFromCurrency: string;
+  convertedFromValue: string;
+  currency: string;
+  value: string;
+}
+
+export interface PrimaryItemGroup {
+  itemGroupAdditionalImages: ItemGroupAdditionalImage[];
+  itemGroupHref: string;
+  itemGroupId: string;
+  itemGroupImage: ItemGroupImage;
+  itemGroupTitle: string;
+  itemGroupType: string;
+}
+
+export interface ItemGroupAdditionalImage {
+  height: string;
+  imageUrl: string;
+  width: string;
+}
+
+export interface ItemGroupImage {
+  height: string;
+  imageUrl: string;
+  width: string;
+}
+
+export interface PrimaryProductReviewRating {
+  averageRating: string;
+  ratingHistograms: RatingHistogram[];
+  reviewCount: string;
+}
+
+export interface RatingHistogram {
+  count: string;
+  rating: string;
+}
+
+export interface Product {
+  additionalImages: AdditionalImage[];
+  additionalProductIdentities: AdditionalProductIdentity[];
+  aspectGroups: AspectGroup[];
+  brand: string;
+  description: string;
+  gtins: string[];
+  image: Image;
+  mpns: string[];
+  title: string;
+}
+
+export interface AdditionalProductIdentity {
+  productIdentity: ProductIdentity[];
+}
+
+export interface ProductIdentity {
+  identifierType: string;
+  identifierValue: string;
+}
+
+export interface AspectGroup {
+  aspects: Aspect[];
+  localizedGroupName: string;
+}
+
+export interface Aspect {
+  localizedName: string;
+  localizedValues: string[];
+}
+
+export interface ReturnTerms {
+  extendedHolidayReturnsOffered: string;
+  refundMethod: string;
+  restockingFeePercentage: string;
+  returnInstructions: string;
+  returnMethod: string;
+  returnPeriod: ReturnPeriod;
+  returnsAccepted: string;
+  returnShippingCostPayer: string;
+}
+
+export interface ReturnPeriod {
+  unit: string;
+  value: string;
+}
+
+export interface Seller {
+  feedbackPercentage: string;
+  feedbackScore: string;
+  sellerAccountType: string;
+  sellerLegalInfo: SellerLegalInfo;
+  userId: string;
+  username: string;
+}
+
+export interface SellerLegalInfo {
+  email: string;
+  fax: string;
+  imprint: string;
+  legalContactFirstName: string;
+  legalContactLastName: string;
+  name: string;
+  phone: string;
+  registrationNumber: string;
+  sellerProvidedLegalAddress: SellerProvidedLegalAddress;
+  termsOfService: string;
+  vatDetails: VatDetail[];
+  economicOperator: EconomicOperator;
+  weeeNumber: string;
+}
+
+export interface SellerProvidedLegalAddress {
+  addressLine1: string;
+  addressLine2: string;
+  city: string;
+  country: string;
+  countryName: string;
+  county: string;
+  postalCode: string;
+  stateOrProvince: string;
+}
+
+export interface VatDetail {
+  issuingCountry: string;
+  vatId: string;
+}
+
+export interface EconomicOperator {
+  companyName: string;
+  addressLine1: string;
+  addressLine2: string;
+  city: string;
+  stateOrProvince: string;
+  postalCode: string;
+  country: string;
+  phone: string;
+  email: string;
+}
+
+export interface SellerCustomPolicy {
+  description: string;
+  label: string;
+  type: string;
+}
+
+export interface ShippingOption {
+  additionalShippingCostPerUnit: AdditionalShippingCostPerUnit;
+  cutOffDateUsedForEstimate: string;
+  fulfilledThrough: string;
+  guaranteedDelivery: string;
+  importCharges: ImportCharges;
+  maxEstimatedDeliveryDate: string;
+  minEstimatedDeliveryDate: string;
+  quantityUsedForEstimate: string;
+  shippingCarrierCode: string;
+  shippingCost: ShippingCost;
+  shippingCostType: string;
+  shippingServiceCode: string;
+  shipToLocationUsedForEstimate: ShipToLocationUsedForEstimate;
+  trademarkSymbol: string;
+  type: string;
+}
+
+export interface AdditionalShippingCostPerUnit {
+  convertedFromCurrency: string;
+  convertedFromValue: string;
+  currency: string;
+  value: string;
+}
+
+export interface ImportCharges {
+  convertedFromCurrency: string;
+  convertedFromValue: string;
+  currency: string;
+  value: string;
+}
+
+export interface ShippingCost {
+  convertedFromCurrency: string;
+  convertedFromValue: string;
+  currency: string;
+  value: string;
+}
+
+export interface ShipToLocationUsedForEstimate {
+  country: string;
+  postalCode: string;
+}
+
+export interface ShipToLocations {
+  regionExcluded: RegionExcluded[];
+  regionIncluded: RegionIncluded[];
+}
+
+export interface RegionExcluded {
+  regionId: string;
+  regionName: string;
+  regionType: string;
+}
+
+export interface RegionIncluded {
+  regionId: string;
+  regionName: string;
+  regionType: string;
+}
+
+export interface Tax {
+  ebayCollectAndRemitTax: string;
+  includedInPrice: string;
+  shippingAndHandlingTaxed: string;
+  taxJurisdiction: TaxJurisdiction;
+  taxPercentage: string;
+  taxType: string;
+}
+
+export interface TaxJurisdiction {
+  region: Region;
+  taxJurisdictionId: string;
+}
+
+export interface Region {
+  regionName: string;
+  regionType: string;
+}
+
+export interface UnitPrice {
+  convertedFromCurrency: string;
+  convertedFromValue: string;
+  currency: string;
+  value: string;
+}
+
+export interface Warning {
+  category: string;
+  domain: string;
+  errorId: string;
+  inputRefIds: string[];
+  longMessage: string;
+  message: string;
+  outputRefIds: string[];
+  parameters: Parameter[];
+  subdomain: string;
+}
+
+export interface Parameter {
+  name: string;
+  value: string;
 }

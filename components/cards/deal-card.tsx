@@ -18,7 +18,6 @@ type Props = {
 };
 
 const DealCard = ({ product }: Props) => {
-  console.log(product);
   return (
     <Link
       href={`/products/${
